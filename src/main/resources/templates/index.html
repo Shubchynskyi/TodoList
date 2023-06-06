@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/styles.css}" />
+  <script src="../static/index.js"></script>
+</head>
+<body>
+<h1>Todo list!</h1>
+
+<div th:each="task : ${tasksPage.content}">
+  <!-- Форма для редактирования задачи -->
+  <form th:action="@{/edit/{id}(id=${task.id})}" method="post" th:id="'edit-form-' + ${task.id}">
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="hidden" th:value="${currentPage}" name="page" />
+    <input type="hidden" th:value="${currentLimit}" name="limit" />
+  </form>
+  <!-- Форма для удаления задачи -->
+  <form th:action="@{/delete/{id}(id=${task.id})}" method="post" th:id="'delete-form-' + ${task.id}">
+    <input type="hidden" name="_method" value="DELETE" />
+    <input type="hidden" name="page" th:value="${currentPage}" />
+    <input type="hidden" name="limit" th:value="${currentLimit}" />
+  </form>
+</div>
+
+<table>
+  <tr>
+    <th>#</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Actions</th>
+    <th>Delete</th>
+  </tr>
+
+  <tr th:each="task, stat : ${tasksPage.content}">
+    <td th:text="${tasksPage.number * tasksPage.size + stat.index + 1}"></td>
+    <td>
+      <span th:id="'description-' + ${task.id}" th:text="${task.description}"></span>
+      <input th:id="'input-description-' + ${task.id}" type="text" th:value="${task.description}" name="description" class="hidden" th:form="'edit-form-' + ${task.id}">
+    </td>
+    <td>
+      <span th:id="'status-' + ${task.id}" th:text="${task.status}"></span>
+      <select th:id="'select-status-' + ${task.id}" name="status" class="hidden" th:form="'edit-form-' + ${task.id}">
+        <option th:each="status : ${statuses}"
+                th:value="${status}"
+                th:text="${status}"
+                th:selected="${task.status == status}"></option>
+      </select>
+    </td>
+    <td>
+      <button th:id="'edit-' + ${task.id}" th:attr="data-id=${task.id}" onclick="editTask(this.getAttribute('data-id'));" type="button">Edit</button>
+      <button th:id="'save-' + ${task.id}" th:attr="data-id=${task.id}" type="submit" class="hidden" th:form="'edit-form-' + ${task.id}">Save</button>
+
+      <input type="hidden" name="id" th:value="${task.id}" th:form="'edit-form-' + ${task.id}">
+    </td>
+    <td>
+      <button th:id="'delete-' + ${task.id}" type="submit" th:form="'delete-form-' + ${task.id}">Delete</button>
+    </td>
+  </tr>
+</table>
+
+<div th:if="${tasksPage.totalPages > 0}" class="pagination">
+  <div th:each="pageNumber : ${#numbers.sequence(0, tasksPage.totalPages - 1)}">
+    <a th:href="@{'/?page=' + ${pageNumber} + '&limit=' + ${currentLimit}}"
+       th:text="${pageNumber + 1}"
+       th:class="${pageNumber == currentPage ? 'active' : ''}"></a>
+  </div>
+</div>
+
+<form th:action="@{/add}" th:object="${task}" method="post">
+  <input type="hidden" th:value="${currentPage}" name="page" />
+  <input type="hidden" th:value="${currentLimit}" name="limit" />
+  <div>
+    <label>Description:</label>
+    <input type="text" th:field="*{description}" required maxlength="100" />
+  </div>
+
+  <div>
+    <input type="submit" value="Add" />
+  </div>
+</form>
+
+<form th:action="@{/}" method="get">
+  <div>
+    <label>Tasks per page:</label>
+    <select name="limit" onchange="this.form.submit()">
+      <option th:each="limit : ${limits}"
+              th:value="${limit}"
+              th:text="${limit}"
+              th:selected="${limit == currentLimit}"></option>
+    </select>
+  </div>
+</form>
+
+<script th:src="@{/index.js}"></script>
+</body>
+</html>

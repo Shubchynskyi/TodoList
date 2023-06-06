@@ -1,0 +1,40 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.pagination {
+    margin-top: 20px;
+    display: inline-flex;
+}
+
+.pagination a {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid black;
+    text-decoration: none;
+    color: black;
+    background-color: #f2f2f2;  /* light gray */
+    border-radius: 5px; /* rounded corners */
+    transition: background-color 0.3s; /* smooth color change */
+}
+
+.pagination a:hover {
+    background-color: #ddd; /* darker gray when hovered */
+}
+
+.pagination .active {
+    color: red;
+    border: 1px solid red;
+    background-color: #fff; /* white background for active page */
+}
+
+form {
+    margin-top: 20px; /* space between elements */
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+    position: absolute;
+}
