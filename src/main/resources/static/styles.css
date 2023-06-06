@@ -1,40 +1,180 @@
+.parent-div,
+form,
+table {
+    width: 60%;
+}
+
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
 
-.pagination {
-    margin-top: 20px;
-    display: inline-flex;
-}
-
-.pagination a {
-    margin: 5px;
-    padding: 5px;
-    border: 1px solid black;
-    text-decoration: none;
-    color: black;
-    background-color: #f2f2f2;  /* light gray */
-    border-radius: 5px; /* rounded corners */
-    transition: background-color 0.3s; /* smooth color change */
-}
-
-.pagination a:hover {
-    background-color: #ddd; /* darker gray when hovered */
-}
-
-.pagination .active {
-    color: red;
-    border: 1px solid red;
-    background-color: #fff; /* white background for active page */
-}
-
-form {
-    margin-top: 20px; /* space between elements */
+.task-per-page {
+    margin-bottom: 10px;
 }
 
 .hidden {
     display: none;
     visibility: hidden;
     position: absolute;
+}
+
+input[type="text"] {
+    color: #0000ff;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-style: italic;
+    font-size: 18px;
+}
+
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    margin-top: 7px;
+    margin-bottom: 14px;
+}
+
+.col-id {
+    max-width: 20px;
+    white-space: nowrap;
+    padding: 5px;
+    text-align: center;
+}
+
+.col-status {
+    min-width: 130px;
+    max-width: 130px;
+    text-align: center;
+}
+
+.col-actions {
+    max-width: 100px;
+    white-space: nowrap;
+    padding: 5px;
+}
+
+.col-delete {
+    max-width: 100px;
+    white-space: nowrap;
+    padding: 5px;
+}
+
+.col-desc {
+    padding: 5px;
+    width: 100%;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    width: 80px;
+    min-height: 25px;
+}
+
+.delete-button {
+    background-color: #ff6d6d;
+}
+
+.edit-button {
+    background-color: #ffd25e;
+}
+
+.save-button {
+    background-color: #5cfd5c;
+}
+
+button:hover {
+    background-color: #0064d2;
+}
+
+a {
+    color: #dc3545;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+th {
+    background-color: #eafce0;
+    font-weight: bold;
+}
+
+.col-desc input {
+    width: 95%; /* full width of the cell */
+}
+
+.done-desc {
+    text-decoration: line-through;
+    text-decoration-color: rgba(255, 0, 0, 0.6); /* semi-transparent red line */
+}
+
+.paused-desc {
+    color: darkblue;
+}
+
+.status-text {
+    font-size: 14px;
+}
+
+.parent-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-task-button {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 110px;
+    height: 35px;
+    vertical-align: middle;
+}
+
+.add-input {
+    width: 400px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.pagination a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    padding: 5px;
+    border: none;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #0056b3;
+}
+
+.pagination .active {
+    background-color: #0056b3;
 }

@@ -5,7 +5,9 @@ function editTask(id) {
     let inputDescription = document.getElementById('input-description-' + id);
     let statusSpan = document.getElementById('status-' + id);
     let selectStatus = document.getElementById('select-status-' + id);
+    let deleteButton = document.getElementById('delete-' + id);
 
+    deleteButton.classList.add('hidden')
     editButton.classList.add('hidden');
     saveButton.classList.remove('hidden');
     descriptionSpan.classList.add('hidden');
