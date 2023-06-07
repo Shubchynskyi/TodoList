@@ -53,13 +53,13 @@ table {
 }
 
 .col-actions {
-    max-width: 100px;
+    max-width: 110px;
     white-space: nowrap;
     padding: 5px;
 }
 
 .col-delete {
-    max-width: 100px;
+    max-width: 110px;
     white-space: nowrap;
     padding: 5px;
 }
@@ -75,7 +75,7 @@ button {
     border-radius: 3px;
     color: #ffffff;
     cursor: pointer;
-    width: 80px;
+    width: 90px;
     min-height: 25px;
 }
 
@@ -177,4 +177,16 @@ th {
 
 .pagination .active {
     background-color: #0056b3;
+}
+
+.a-icon {
+    display: inline-block;
+}
+
+.img-icon {
+    width: 25px;
+    height: 25px;
+    border-color: #0078ff;
+    border-width: 1px;
+    padding: 0 5px;
 }
