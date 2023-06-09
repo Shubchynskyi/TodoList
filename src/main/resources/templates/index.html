@@ -7,19 +7,22 @@
 </head>
 <body>
 
-<span>
-    <a href="./?lang=en" class="a-icon">
-        <img th:src="@{/images/en-icon.png}" alt="EN flag" class="img-icon">
-    </a>
-
-    <a href="./?lang=ua" class="a-icon">
-        <img th:src="@{/images/ua-icon.png}" alt="UA flag" class="img-icon">
-    </a>
-
-    <a href="./?lang=ru" class="a-icon">
-        <img th:src="@{/images/ru-icon.png}" alt="RU flag" class="img-icon">
-    </a>
-</span>
+<div style="width: 90%; display: flex; justify-content: space-between;">
+    <div style="flex-grow: 1;">
+<!--        empty-->
+    </div>
+    <span>
+            <a href="./?lang=en" class="a-icon">
+                <img th:src="@{/images/en-icon.png}" alt="EN flag" class="img-icon">
+            </a>
+            <a href="./?lang=ua" class="a-icon">
+                <img th:src="@{/images/ua-icon.png}" alt="UA flag" class="img-icon">
+            </a>
+            <a href="./?lang=ru" class="a-icon">
+                <img th:src="@{/images/ru-icon.png}" alt="RU flag" class="img-icon">
+            </a>
+        </span>
+</div>
 
 <h2 th:text="#{index.head}">Todo list!</h2>
 
@@ -44,7 +47,7 @@
         <input type="text" th:field="*{description}" required maxlength="100" class="add-input"/>
     </form>
 
-    <!-- paging -->
+
     <div th:if="${tasksPage.totalPages > 1}" class="pagination">
         <div th:each="pageNumber : ${#numbers.sequence(0, tasksPage.totalPages - 1)}" style="text-align: right;">
             <a th:href="@{'/?page=' + ${pageNumber} + '&limit=' + ${currentLimit}}"
@@ -100,7 +103,7 @@
     </tr>
 </table>
 
-
+<!-- paging -->
 <div th:if="${tasksPage.totalPages > 1}" class="pagination">
     <div th:each="pageNumber : ${#numbers.sequence(0, tasksPage.totalPages - 1)}">
         <a th:href="@{'/?page=' + ${pageNumber} + '&limit=' + ${currentLimit}}"

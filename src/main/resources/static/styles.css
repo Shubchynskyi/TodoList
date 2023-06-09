@@ -190,3 +190,8 @@ th {
     border-width: 1px;
     padding: 0 5px;
 }
+
+.lang-block {
+    text-align: right;
+    align-items: flex-end;
+}
