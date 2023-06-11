@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="2" author="d.shubchynskyi@gmail.com" context="example-context">
+        <insert tableName="task">
+            <column name="description" value="Buy groceries"/>
+            <column name="status" valueNumeric="0"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Pay bills"/>
+            <column name="status" valueNumeric="1"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Schedule a doctor's appointment"/>
+            <column name="status" valueNumeric="2"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Clean the house"/>
+            <column name="status" valueNumeric="0"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Go for a run"/>
+            <column name="status" valueNumeric="1"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Finish work presentation"/>
+            <column name="status" valueNumeric="2"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Call a friend"/>
+            <column name="status" valueNumeric="0"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Read a book"/>
+            <column name="status" valueNumeric="1"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Organize files"/>
+            <column name="status" valueNumeric="2"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Cook dinner"/>
+            <column name="status" valueNumeric="0"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Write a blog post"/>
+            <column name="status" valueNumeric="1"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Do laundry"/>
+            <column name="status" valueNumeric="2"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Plan a vacation"/>
+            <column name="status" valueNumeric="0"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Fix a leaky faucet"/>
+            <column name="status" valueNumeric="1"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Attend a meeting"/>
+            <column name="status" valueNumeric="2"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Learn a new language"/>
+            <column name="status" valueNumeric="0"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Take the dog for a walk"/>
+            <column name="status" valueNumeric="1"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Start a new project"/>
+            <column name="status" valueNumeric="2"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Volunteer at a local charity"/>
+            <column name="status" valueNumeric="0"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Research a new topic"/>
+            <column name="status" valueNumeric="1"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Attend a yoga class"/>
+            <column name="status" valueNumeric="2"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Update resume"/>
+            <column name="status" valueNumeric="0"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Paint a picture"/>
+            <column name="status" valueNumeric="1"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Practice a musical instrument"/>
+            <column name="status" valueNumeric="2"/>
+        </insert>
+        <insert tableName="task">
+            <column name="description" value="Relax and unwind"/>
+            <column name="status" valueNumeric="0"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
