@@ -63,14 +63,13 @@ public class MainController {
         return "redirect:/?page=" + page.orElse(0) + "&limit=" + limit.orElse(10);
     }
 
-    @PatchMapping ("/edit/{id}")
+    @PatchMapping("/edit/{id}")
     public String editTask(
             @ModelAttribute Task task,
             @RequestParam(value = "page", required = false, defaultValue = "0") Optional<Integer> page,
             @RequestParam(value = "limit", required = false, defaultValue = "10") Optional<Integer> limit
     ) {
         taskService.createOrUpdateTask(task);
-
         return "redirect:/?page=" + page.orElse(0) + "&limit=" + limit.orElse(10);
     }
 
