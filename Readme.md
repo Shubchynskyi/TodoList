@@ -7,5 +7,5 @@ Mandatory conditions - use Docker Compose
 Spring Boot, Jpa, Thymeleaf, Docker Compose, Liquibase
 
 How to start:
-1) Launch [docker-compose.yaml](docker-compose.yaml) for build current project from IDEA
+1) Launch [docker-compose.yaml](docker-compose.yml) for build current project from IDEA
 2) Launch [docker-compose-hub.yaml](scripts/docker-compose-hub.yaml) for download from Docker Hub
