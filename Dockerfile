@@ -1,4 +1,4 @@
-FROM openjdk:21-jdk-alpine
+FROM openjdk:21-jdk
 MAINTAINER d.shubchynskyi@gmail.com
 
 ENV DOCKERIZE_VERSION v0.6.1
