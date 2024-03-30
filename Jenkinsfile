@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    tools {
-        maven "M3"
-        jdk "JDK_21"
-    }
     stages {
         stage('Preparation') {
             steps {
