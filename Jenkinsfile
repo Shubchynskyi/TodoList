@@ -2,18 +2,21 @@ pipeline {
     agent any
 
     stages {
+        stage('Preparation') {
+            steps {
+                git 'https://github.com/Shubchynskyi/TodoList'
+            }
+        }
         stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        stage('Build Docker Image') {
             steps {
                 sh 'docker build -t to-do-image .'
             }
         }
-
-        stage('Test') {
-            steps {
-                sh 'mvn clean test'
-            }
-        }
-
         stage('Deploy') {
             steps {
                 sh 'docker-compose up -d'
