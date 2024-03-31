@@ -2,7 +2,6 @@ pipeline {
     agent any
     tools {
         maven "M3"
-        jdk "JDK_21"
     }
     stages {
         stage('Preparation') {
@@ -12,7 +11,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                withMaven(maven: 'M3', jdk: 'JDK_21') {
+                withMaven(maven: 'M3') {
                     sh 'mvn clean package'
                 }
             }
