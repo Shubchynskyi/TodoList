@@ -92,6 +92,15 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <!-- Добавленный плагин компилятора для указания версии Java -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version> <!-- Убедитесь, что эта версия совместима с Java 21 -->
+                <configuration>
+                    <release>21</release> <!-- Указание использовать Java 21 -->
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
