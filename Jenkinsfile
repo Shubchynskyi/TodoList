@@ -2,44 +2,48 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            agent {
-                docker {
-                    // Используем образ Maven с поддержкой Java 21 для сборки проекта
-                    image 'maven:3.9.6-eclipse-temurin-21'
-                    args '-v /var/run/docker.sock:/var/run/docker.sock'
+        stage('Checkout') {
+            steps {
+                // Получаем исходный код из репозитория
+                checkout scm
+            }
+        }
+
+        stage('Build and Run') {
+            steps {
+                script {
+                    // Запускаем Docker контейнеры с помощью docker-compose
+                    sh 'docker-compose up --build -d'
                 }
             }
+        }
+
+        stage('Test') {
             steps {
-                // Копируем исходный код в рабочий каталог в контейнере и выполняем сборку
-                sh 'cp -r * /usr/src/app'
-                sh 'cd /usr/src/app && mvn clean package -DskipTests'
+                // Здесь вы можете добавить шаги для тестирования вашего приложения
+                echo 'Running tests...'
             }
         }
-        stage('Build Docker Image') {
-            steps {
-                // Собираем Docker образ приложения
-                sh 'docker build -t to-do-image .'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                // Запускаем приложение и зависимости через docker-compose
-                sh 'docker-compose up -d'
-            }
-        }
+
     }
+
     post {
             success {
-                echo 'Сборка прошла успешно!'
-                // Здесь шаги, которые необходимо выполнить после успешной сборки
+                // Действия при успешной сборке
+                echo 'Build was successful!'
             }
-            failure {
-                echo 'Сборка не удалась.'
-                // Шаги для случая неудачной сборки
 
-                // Очистка после сборки
-                sh 'docker-compose down'
+            failure {
+                // Действия при неудачной сборке
+                echo 'Build failed, cleaning up...'
+                script {
+                    sh 'docker-compose down'
+                    sh 'docker image prune -f' // Опционально, если вы хотите удалить неиспользуемые образы
+                }
             }
-        }
+
+            always {
+                echo 'Always block done...'
+            }
+    }
 }
