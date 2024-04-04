@@ -11,8 +11,6 @@ services:
     restart: on-failure
     networks:
       - todo-app-net
-    expose:
-      - "8080"
 
   mysql:
     image: mysql:8.0.32
@@ -28,8 +26,6 @@ services:
     restart: on-failure
     networks:
       - todo-app-net
-    expose:
-      - "3306"
 
 networks:
   todo-app-net:
