@@ -12,7 +12,6 @@ pipeline {
         stage('Build and Run') {
             steps {
                 script {
-                    sh "docker version"
                     // Запускаем Docker контейнеры с помощью docker-compose
                     sh "docker-compose up --build -d"
                 }
