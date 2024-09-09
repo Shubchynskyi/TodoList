@@ -6,7 +6,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/todo?createDatabaseIfNotExist=true
     depends_on:
       - mysql
-    restart: on-failure
+    restart: unless-stopped
     networks:
       - todo-app-net
 
@@ -21,7 +21,7 @@ services:
       interval: 5s
       timeout: 60s
       retries: 10
-    restart: on-failure
+    restart: unless-stopped
     networks:
       - todo-app-net
 
