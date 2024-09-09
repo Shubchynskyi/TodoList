@@ -1,5 +1,5 @@
 # Этап 1: Сборка приложения с использованием Maven
-FROM maven:3.9.6-eclipse-temurin-21-jammy as build
+FROM maven:3.9.6-eclipse-temurin-21-jammy AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
@@ -21,4 +21,4 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 COPY --from=build /app/target/*.jar ToDoList-1.0.0.jar
-ENTRYPOINT ["dockerize", "-wait", "tcp://mysql:3306", "-timeout", "60s", "java", "-jar", "ToDoList-1.0.0.jar"]
+ENTRYPOINT ["dockerize", "-wait", "tcp://mysql:3306", "-timeout", "100s", "java", "-jar", "ToDoList-1.0.0.jar"]
