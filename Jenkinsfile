@@ -18,6 +18,15 @@ pipeline {
             }
         }
 
+        stage('Restart Nginx') {
+            steps {
+                script {
+                     // Перезапуск Nginx для обновления подключений
+                     sh 'docker exec webserver nginx -s reload'
+                }
+            }
+        }
+
         stage('Test') {
             steps {
                 // Здесь вы можете добавить шаги для тестирования вашего приложения
