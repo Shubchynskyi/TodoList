@@ -5,7 +5,7 @@ COPY pom.xml .
 COPY src ./src
 RUN mvn clean package
 
-# Этап 2: Создание окончательного Docker образа
+# stage 2: Создание окончательного Docker образа
 FROM amazoncorretto:21-alpine-full
 WORKDIR /app
 
