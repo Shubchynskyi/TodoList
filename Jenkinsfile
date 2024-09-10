@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Получаем исходный код из репозитория
+                // Fetch the source code from the repository
                 checkout scm
             }
         }
@@ -12,7 +12,7 @@ pipeline {
         stage('Build and Run') {
             steps {
                 script {
-                    // Запускаем Docker контейнеры с помощью docker-compose
+                    // Start Docker containers using docker-compose
                     sh "docker-compose up --build -d"
                 }
             }
@@ -21,38 +21,22 @@ pipeline {
         stage('Restart Nginx') {
             steps {
                 script {
-                     // Перезапуск Nginx для обновления подключений
-                     sh 'docker exec webserver nginx -s reload'
+                    // Restart Nginx to update connections
+                    sh 'docker exec webserver nginx -s reload'
                 }
             }
         }
-
-        stage('Test') {
-            steps {
-                // Здесь вы можете добавить шаги для тестирования вашего приложения
-                echo 'Running tests...'
-            }
-        }
-
     }
 
     post {
             success {
-                // Действия при успешной сборке
+                // Actions upon successful build
                 echo 'Build was successful!'
             }
 
             failure {
-                // Действия при неудачной сборке
-                echo 'Build failed, cleaning up...'
-                script {
-                    sh 'docker-compose down'
-                    sh 'docker image prune -f' // Опционально, если вы хотите удалить неиспользуемые образы
-                }
-            }
-
-            always {
-                echo 'Always block done...'
+                // Actions upon failed build
+                echo 'Build failed'
             }
     }
 }
