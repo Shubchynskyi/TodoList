@@ -1,11 +1,35 @@
-Web application - ToDo list
+# ToDo List Web Application
 
-As part of an educational project at Javarush University (https://javarush.com/university)
+A web application for managing a ToDo list.
 
-Mandatory conditions - use Docker Compose
+Developed as part of an educational project at [Javarush University](https://javarush.com/university).
 
-Spring Boot, Jpa, Thymeleaf, Docker Compose, Liquibase
+## Features Implemented
 
-How to start:
-1) Launch [docker-compose.yaml](docker-compose.yml) for build current project from IDEA
-2) Launch [docker-compose-hub.yaml](scripts/docker-compose-hub.yaml) for download from Docker Hub
+- **Task Management**: Create, edit, and manage tasks in a structured ToDo list format.
+- **User Roles**: Role-based functionality tailored to different types of users.
+- **Integration with Docker Compose**: Simplified deployment using Docker Compose for easy setup and management.
+
+## Technologies Used
+
+- **Backend**: Java with Spring Boot, Spring Data JPA, Liquibase for database migrations.
+- **Frontend**: Thymeleaf for dynamic rendering of pages, combined with HTML and Bootstrap for responsive design.
+- **Deployment**: The application is packaged and deployed using Docker and Docker Compose, managed by a Jenkins CI/CD pipeline.
+
+## How to Start
+
+1. **Ensure Docker is Running**: Make sure Docker is installed and running on your machine.
+2. **Launch the Application**:
+   - Run the setup using Docker Compose:
+     ```bash
+     docker-compose -f docker-compose-local.yaml up -d
+     ```
+   - [Link to docker-compose-local.yaml](./docker-compose-local.yaml)
+
+## CI/CD Pipeline
+
+- **Jenkins Pipeline**: Jenkins is used for automated building and deployment of the application within Docker.
+
+### Live Version
+
+Explore the live version of the project: [ToDo List Application](https://todo-list.shubchynskyi.pp.ua/)
