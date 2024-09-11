@@ -17,26 +17,16 @@ pipeline {
                 }
             }
         }
-
-        stage('Restart Nginx') {
-            steps {
-                script {
-                    // Restart Nginx to update connections
-                    sh 'docker exec webserver nginx -s reload'
-                }
-            }
-        }
     }
 
     post {
-            success {
-                // Actions upon successful build
-                echo 'Build was successful!'
-            }
-
-            failure {
-                // Actions upon failed build
-                echo 'Build failed'
-            }
+        failure {
+            echo 'Build failed.'
+        }
+        success {
+            // Restart Nginx to update connections
+            sh 'docker exec webserver nginx -s reload'
+            echo 'Build succeeded!'
+        }
     }
 }
