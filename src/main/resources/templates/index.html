@@ -31,12 +31,14 @@
 <form th:action="@{/}" method="get" style="text-align: right;">
     <div class="task-per-page">
         <label th:text="#{index.task.per.page}">Tasks per page:</label>
-        <select name="limit" onchange="this.form.submit()">
-            <option th:each="limit : ${limits}"
-                    th:value="${limit}"
-                    th:text="${limit}"
-                    th:selected="${limit == currentLimit}"></option>
-        </select>
+        <label>
+            <select name="limit" onchange="this.form.submit()">
+                <option th:each="limit : ${limits}"
+                        th:value="${limit}"
+                        th:text="${limit}"
+                        th:selected="${limit == currentLimit}"></option>
+            </select>
+        </label>
     </div>
 </form>
 
@@ -46,7 +48,9 @@
         <input type="hidden" th:value="${currentPage}" name="page"/>
         <input type="hidden" th:value="${currentLimit}" name="limit"/>
         <input type="submit" th:value="#{index.add.new.task.button}" class="add-task-button"/>
-        <input type="text" th:field="*{description}" required maxlength="100" class="add-input"/>
+        <label>
+            <input type="text" th:field="*{description}" required maxlength="100" class="add-input"/>
+        </label>
     </form>
 
 
@@ -74,33 +78,36 @@
             <span th:id="'description-' + ${task.id}" th:text="${task.description}"
                   th:class="${task.status.name() == 'DONE'} ? 'done-desc' : (${task.status.name() == 'PAUSED'} ? 'paused-desc' : '')"></span>
 
-            <input th:id="'input-description-' + ${task.id}" type="text" th:value="${task.description}"
-                   name="description" class="hidden" th:form="'edit-form-' + ${task.id}">
+            <label>
+                <input th:id="'input-description-' + ${task.id}" type="text" th:value="${task.description}"
+                       name="description" class="hidden" th:form="'edit-form-' + ${task.id}">
+            </label>
         </td>
         <td class="col-status">
             <span th:id="'status-' + ${task.id}" th:text="${task.status.getDisplayName()}" class="status-text"></span>
-            <select th:id="'select-status-' + ${task.id}" name="status" class="hidden"
-                    th:form="'edit-form-' + ${task.id}">
-                <option th:each="status : ${statuses}"
-                        th:value="${status.name()}"
-                        th:text="${status.getDisplayName()}"
-                        th:selected="${task.status == status}"></option>
-            </select>
+            <label>
+                <select th:id="'select-status-' + ${task.id}" name="status" class="hidden"
+                        th:form="'edit-form-' + ${task.id}">
+                    <option th:each="status : ${statuses}"
+                            th:value="${status.name()}"
+                            th:text="${status.getDisplayName()}"
+                            th:selected="${task.status == status}"></option>
+                </select>
+            </label>
         </td>
+
         <td class="col-actions">
             <button class="edit-button" th:id="'edit-' + ${task.id}" th:attr="data-id=${task.id}"
-                    onclick="editTask(this.getAttribute('data-id'));" type="button">Edit
-            </button>
+                    onclick="editTask(this.getAttribute('data-id'));" type="button"
+                    th:text="#{index.button.edit}">Edit1</button>
             <button class="save-button hidden" th:id="'save-' + ${task.id}" th:attr="data-id=${task.id}" type="submit"
-                    th:form="'edit-form-' + ${task.id}">Save
-            </button>
+                    th:form="'edit-form-' + ${task.id}" th:text="#{index.button.save}">Save1</button>
 
             <input type="hidden" name="id" th:value="${task.id}" th:form="'edit-form-' + ${task.id}">
         </td>
         <td class="col-delete">
             <button class="delete-button" th:id="'delete-' + ${task.id}" type="submit"
-                    th:form="'delete-form-' + ${task.id}">Delete
-            </button>
+                    th:form="'delete-form-' + ${task.id}" th:text="#{index.button.delete}">Delete1</button>
         </td>
     </tr>
 </table>
