@@ -1,8 +1,8 @@
 # ToDo List Web Application
 
-A web application for managing a ToDo list.
+[![Live Application](https://img.shields.io/badge/Live-Application-brightgreen)](https://todo-list.shubchynskyi.pp.ua)
 
-Developed as part of an educational project at [Javarush University](https://javarush.com/university).
+A web application for managing a ToDo list.
 
 ## Features Implemented
 
@@ -25,10 +25,9 @@ Developed as part of an educational project at [Javarush University](https://jav
      ```
    - [Link to docker-compose-local.yaml](./docker-compose-local.yaml)
 
-## CI/CD Pipeline
+## Contact
 
-- **Jenkins Pipeline**: Jenkins is used for automated building and deployment of the application within Docker.
-
-### Live Version
-
-Explore the live version of the project: [ToDo List Application](https://todo-list.shubchynskyi.pp.ua/)
+For any questions or further information, please contact [d.shubchynskyi@gmail.com](mailto:d.shubchynskyi@gmail.com)
+   ```
+   d.shubchynskyi@gmail.com
+   ```
