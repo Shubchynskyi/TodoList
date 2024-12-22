@@ -7,7 +7,6 @@ Developed as part of an educational project at [Javarush University](https://jav
 ## Features Implemented
 
 - **Task Management**: Create, edit, and manage tasks in a structured ToDo list format.
-- **User Roles**: Role-based functionality tailored to different types of users.
 - **Integration with Docker Compose**: Simplified deployment using Docker Compose for easy setup and management.
 
 ## Technologies Used
